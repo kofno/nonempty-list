@@ -1,0 +1,40 @@
+{
+  "name": "nonempty-list",
+  "version": "0.0.0-development",
+  "description": "A list that always has at least one thing in it.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "author": "Ryan L. Bell <ryan.l.bell@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kofno/nonempty-list.git"
+  },
+  "scripts": {
+    "docs": "typedoc --out docs && touch docs/.nojekyll",
+    "test": "ts-node node_modules/tape/bin/tape tests/**/*.ts | tap-spec",
+    "build": "tsc",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.2.32",
+    "prettier": "^1.13.7",
+    "semantic-release": "^15.8.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.9.2",
+    "typestrict": "^0.0.9"
+  },
+  "dependencies": {
+    "maybeasy": "^2.4.0",
+    "resulty": "^2.2.0"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
+  }
+}
