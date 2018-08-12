@@ -1450,8 +1450,8 @@ marked@^0.4.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.4.0.tgz#9ad2c2a7a1791f10a852e0112f77b571dce10c66"
 
 maybeasy@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/maybeasy/-/maybeasy-2.4.0.tgz#ae554216cf36c5b61afcfa57e32bdb2b9daf6f6a"
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/maybeasy/-/maybeasy-2.5.0.tgz#633ed6abf4ece0b276981357c039376d633a8d83"
 
 mem@^1.1.0:
   version "1.1.0"
