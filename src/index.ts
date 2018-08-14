@@ -1,5 +1,6 @@
-import { fromNullable, just, Maybe, nothing } from 'maybeasy';
+import { just, Maybe, nothing } from 'maybeasy';
 import { err, ok, Result } from 'resulty';
+import { find } from './Helpers';
 
 export class NonEmptyList<T> {
   readonly first: T;
@@ -36,7 +37,7 @@ export class NonEmptyList<T> {
       return just(this.first);
     }
 
-    return fromNullable(this.rest.find(fn));
+    return find(fn, this.rest);
   };
 
   public map = <S>(fn: (t: T) => S): NonEmptyList<S> =>
