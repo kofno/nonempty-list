@@ -29,8 +29,11 @@
     "typestrict": "^0.0.9"
   },
   "dependencies": {
-    "maybeasy": "^2.4.0",
+    "maybeasy": "^2.5.0",
     "resulty": "^2.2.0"
+  },
+  "peerDependencies": {
+    "maybeasy": "^2.5.0"
   },
   "prettier": {
     "trailingComma": "es5",
