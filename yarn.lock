@@ -2580,7 +2580,7 @@ marked@^0.7.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
   integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
 
-maybeasy@^2.5.0:
+maybeasy@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/maybeasy/-/maybeasy-2.6.0.tgz#3e402c0129967b2aa0be4ed9299bf2ab7b878a40"
   integrity sha512-KJ6//02uxyqrhHjY4hMzTwiJTavPqFuUK8ZM+uUZVGw2zC8GBtuzQM2ichXekk0/Jgco7lL3pbfN70dfMztwLA==
@@ -3864,10 +3864,10 @@ resolve@~1.11.1:
   dependencies:
     path-parse "^1.0.6"
 
-resulty@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/resulty/-/resulty-2.2.0.tgz#5be6b975ba36faa4cb4753bd62ffa620b1c6edce"
-  integrity sha512-hb2qC0Ad2+fcFkO4VCbhGzuj/pRs1zRpUbjxT+jinbmAhV4AiM4mJzzmbUPh3pc7GxffHggWp3IeJiXpqOPDvA==
+resulty@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/resulty/-/resulty-3.0.0.tgz#2f852a51f18dd528f43bb7f5ae02a88eaef5bd59"
+  integrity sha512-rdAnIuIC8WMfnlqktJfZz+83djxwQwzVlXnlCRb2h0Zxqzazjp+1z9cfDVmiIWBnjhrcERw3PBK7s+YJ83f2aw==
 
 resumer@~0.0.0:
   version "0.0.0"
