@@ -1,12 +1,22 @@
 import { just, Maybe, nothing } from 'maybeasy';
 import { err, ok, Result } from 'resulty';
-import { find } from './Helpers';
+
+type TesterFn<T> = (t: T) => boolean;
+
+export const find = <T>(fn: TesterFn<T>, ts: ReadonlyArray<T>): Maybe<T> => {
+  for (const t of ts) {
+    if (fn(t)) {
+      return just(t);
+    }
+  }
+  return nothing<T>();
+};
 
 export class NonEmptyList<T> implements Iterable<T> {
   readonly first: T;
   readonly rest: ReadonlyArray<T>;
 
-  constructor(first: T, rest: T[]) {
+  constructor(first: T, rest: ReadonlyArray<T>) {
     this.first = first;
     this.rest = rest;
   }
@@ -43,14 +53,39 @@ export class NonEmptyList<T> implements Iterable<T> {
   public map = <S>(fn: (t: T) => S): NonEmptyList<S> =>
     new NonEmptyList(fn(this.first), this.rest.map(fn));
 
-  public reduce = <S>(fn: (accum: S | undefined, t: T) => S | undefined, start?: S) =>
-    this.toArray().reduce(fn, start);
+  /**
+   * An alias for `map`
+   */
+  public and = this.map;
+
+  public andThen = <S>(fn: (t: T) => NonEmptyList<S>): NonEmptyList<S> => {
+    const results = this.map(fn);
+    const head = results.first;
+    const tail = results.rest;
+
+    const first = head.first;
+    let rest = head.rest;
+    for (let list of tail) {
+      rest = [...rest, list.first, ...list.rest];
+    }
+    return new NonEmptyList(first, rest);
+  };
+
+  public reduce<S>(fn: (accum: S, t: T) => S, start: S): S;
+  public reduce(fn: (accum: T, t: T) => T): T;
+  public reduce<S>(fn: (accum: S | undefined, t: T) => S, start?: S) {
+    return this.toArray().reduce(fn, start);
+  }
 
   public filter = (fn: (t: T) => boolean): T[] => this.toArray().filter(fn);
 
   public sort = () => {
     const [first, ...rest] = this.toArray().sort();
     return new NonEmptyList(first, rest);
+  };
+
+  public join = (separator?: string): string => {
+    return this.toArray().join(separator);
   };
 
   public toArray = (): T[] => [this.first, ...this.rest];
@@ -82,5 +117,5 @@ export const fromArray = <T>(values: ReadonlyArray<T>): Result<string, NonEmptyL
 export const fromArrayMaybe = <T>(values: ReadonlyArray<T>): Maybe<NonEmptyList<T>> =>
   fromArray(values).cata({
     Err: () => nothing<NonEmptyList<T>>(),
-    Ok: l => just(l),
+    Ok: (l) => just(l),
   });

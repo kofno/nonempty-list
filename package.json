@@ -1,40 +1,42 @@
 {
   "name": "nonempty-list",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "A list that always has at least one thing in it.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Ryan L. Bell <ryan.l.bell@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/kofno/nonempty-list.git"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "docs": "typedoc --out docs && touch docs/.nojekyll",
-    "test": "ts-node node_modules/tape/bin/tape tests/**/*.ts | tap-spec",
-    "build": "tsc",
-    "semantic-release": "semantic-release"
+    "test": "bun test tests/**/*.ts",
+    "build": "tsup src/index.ts --format cjs,esm --dts --external maybeasy --external resulty",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --external maybeasy --external resulty --watch"
   },
   "devDependencies": {
-    "@types/tape": "^4.2.32",
-    "prettier": "^1.13.7",
-    "semantic-release": "^15.8.1",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.9.1",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
-    "typedoc": "^0.11.1",
-    "typescript": "^3.7.3",
-    "typestrict": "^0.0.9"
+    "prettier": "^3.5.3",
+    "tsup": "^8.0.1",
+    "typedoc": "^0.27.9",
+    "typescript": "^5.8.2",
+    "@types/bun": "^1.2.4"
   },
   "dependencies": {
-    "maybeasy": "^2.6.0",
-    "resulty": "^3.0.0"
+    "maybeasy": "^6.3.0",
+    "resulty": "^8.0.0"
   },
   "peerDependencies": {
-    "maybeasy": "^2.6.0",
-    "resulty": "^3.0.0"
+    "maybeasy": "^6.3.0",
+    "resulty": "^8.0.0"
   },
   "prettier": {
     "trailingComma": "es5",
