@@ -23,7 +23,6 @@
   ],
   "scripts": {
     "docs": "typedoc --out docs && touch docs/.nojekyll",
-    "test": "bun test tests/**/*.ts",
     "build": "tsup",
     "dev": "tsup src/index.ts --format cjs,esm --dts --external maybeasy --external resulty --watch"
   },
@@ -35,7 +34,7 @@
     "@types/bun": "^1.2.4"
   },
   "dependencies": {
-    "maybeasy": "^6.3.0",
+    "maybeasy": "^7.1.0",
     "resulty": "^8.0.0"
   },
   "peerDependencies": {
